@@ -4,7 +4,8 @@ import MasterRoutes from './Routes/MasterRoutes'
 function App() {
   return (
     <>
-      <MasterRoutes />
+      {/* Routes */}
+      <MasterRoutes />   
     </>
   )
 }
