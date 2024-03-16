@@ -7,14 +7,20 @@ const resetPassword = async (req, res) => {
         const token = req.headers.authorization
         const { password } = req.body
         if (!token) {
-            return res.status(400).send("Fill Token")
+            return res.status(400).send({
+                message: "Invalid Token"
+            })
         }
         const decodedToken = tokenVerification(token)
         if (!decodedToken) {
-            return res.status(400).send("Invalid Token")
+            return res.status(400).send({
+                message: "Invalid Token"
+            })
         }
         if (!password) {
-            return res.status(400).send("Fill Password")
+            return res.status(400).send({
+                message: "Password Required"
+            })
         }
         const prisma = new PrismaClient()
         const user = await prisma.user.findFirst({
@@ -23,7 +29,9 @@ const resetPassword = async (req, res) => {
             }
         })
         if (!user) {
-            return res.status(404).send("Not Found")
+            return res.status(404).send({
+                message: "User Not Found"
+            })
         }
         const hashedPassword = await bcrypt.hash(password, 10)
         await prisma.user.update({
@@ -34,10 +42,15 @@ const resetPassword = async (req, res) => {
                 password: hashedPassword
             }
         })
-        res.status(200).send("Password Reset")
+        res.status(200).send({
+            message: "Password Updated"
+        })
     } catch (err) {
         console.log(err)
-        res.status(500).send("Error")
+        res.status(500).send({
+            message: "Error Resetting Password",
+            error: err.message
+        })
     }
 }
 

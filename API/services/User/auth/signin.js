@@ -18,12 +18,16 @@ const signin = async (req, res) => {
             },
         });
         if (!user) {
-            return res.status(401).send('Not found user');
+            return res.status(401).send({
+                message: 'Invalid email or password',
+            });
         }
 
         // Check if the user exists and verify the password
         if (user.email && !(await bcrypt.compare(validatedUser.password, user.password))) {
-            return res.status(401).send('Invalid email or password');
+            return res.status(401).send({
+                message: 'Invalid email or password',
+            });
         }
 
         // Generate JWT token
@@ -42,7 +46,10 @@ const signin = async (req, res) => {
             res.status(400).json({ validationErrors });
         } else {
             console.error(err);
-            res.status(500).send("Error Creating User");
+            res.status(500).send({
+                message: 'Error Signing In',
+                error: err.message,
+            });
         }
     }
 };

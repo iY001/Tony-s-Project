@@ -12,7 +12,9 @@ const putRole = (req ,res)=>{
             }
         })
         if(!user){
-            res.status(404).send("User Not Found")
+            res.status(404).send({
+                message:"User Not Found"
+            })
         }
 
         // update the user
@@ -29,7 +31,10 @@ const putRole = (req ,res)=>{
         res.send(users)
     }catch(err){
         console.log(err)
-        res.status(500).send("Error Retriving Users", err)
+        res.status(500).send({
+            message:"Error Updating User",
+            error:err.message
+        })
     }
 }
 

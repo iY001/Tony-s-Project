@@ -18,7 +18,9 @@ const signup = async (req, res) => {
             }
         });
         if (userExists) {
-            return res.status(400).send("User already exists");
+            return res.status(400).send({
+                message: "User already exists"
+            });
         }
         // Hash the password
         hashedPassword = await bcrypt.hash(validatedUser.password, 10);

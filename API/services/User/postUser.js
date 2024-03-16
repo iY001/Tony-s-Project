@@ -18,7 +18,9 @@ const postUser = async (req, res) => {
             }
         })
         if (user) {
-            res.status(400).send("User already exists")
+            res.status(400).send({
+                message: "User already exists"
+            })
         }
         const newUser = await prisma.user.create({
             data: {
@@ -26,7 +28,10 @@ const postUser = async (req, res) => {
             }
         });
 
-        res.status(200).json("User Created", { newUser });
+        res.status(200).json({
+            message: "User Created",
+            user
+        });
     } catch (err) {
         if (err.isJoi) {
             // Extract and send Joi validation errors
@@ -38,7 +43,10 @@ const postUser = async (req, res) => {
             res.status(400).json({ validationErrors });
         } else {
             console.error(err);
-            res.status(500).send("Error Creating User");
+            res.status(500).send({
+                message: "Error Creating User",
+                error: err.message
+            });
         }
     }
 };

@@ -23,7 +23,9 @@ const putUser = async (req, res) => {
         });
 
         if (!user) {
-            res.status(404).send("User Not Found");
+            res.status(404).send({
+                message: "User Not Found"
+            });
         }
         
         res.status(201).json({ message: "User Updated", user });
@@ -37,7 +39,10 @@ const putUser = async (req, res) => {
             res.status(400).json({ validationErrors });
         } else {
             console.error(err);
-            res.status(500).send("Error Updating User");
+            res.status(500).send({
+                message: "Error Updating User",
+                error: err.message
+            });
         }
     }
 };

@@ -10,12 +10,17 @@ const getUserById = async (req, res) => {
             }
         })
         if (!user) {
-            res.status(404).send("User Not Found")
+            res.status(404).send({
+                message: "User Not Found"
+            })
         }
         res.send(user)
     } catch (err) {
         console.log(err)
-        res.status(500).send("Error Retriving Users", err)
+        res.status(500).send({
+            message: "Error Retriving User",
+            error: err.message
+        })
     }
 }
 

@@ -9,7 +9,9 @@ const deleteUserById = async (req, res) => {
             }
         })
         if (!user) {
-            res.status(404).send("User Not Found")
+            res.status(404).send({
+                message: "User Not Found"
+            })
         }
         await prisma.user.delete({
             where: {
@@ -19,7 +21,10 @@ const deleteUserById = async (req, res) => {
         res.status(201).send({ message: "User Deleted Successfully", user})
     } catch (err) {
         console.log(err)
-        res.status(500).send("Error Retriving user", err)
+        res.status(500).send({
+            message: "Error Retriving User",
+            error: err.message
+        })
     }
 }
 
