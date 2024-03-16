@@ -1,11 +1,10 @@
 import React from 'react'
-import Login from '../(Auth)/Login'
 
 function Dashbaord() {
+  const user = JSON.parse(localStorage.getItem('user'))
   return (
     <>
-    <Login/>
-    
+    <h1>Hello {user?.name}</h1>    
     </>
   )
 }

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import Swal from 'sweetalert2';
-import './login.css'
+import './auth.css'
 import { CiLock, CiLogin, CiMail } from "react-icons/ci";
+import { IoEyeOutline,IoEyeOffOutline} from "react-icons/io5";
+import {  useNavigate } from 'react-router-dom';
+import PostMethod from '../../functions/PostMethod';
 
 
 function Login() {
@@ -15,13 +18,13 @@ function Login() {
         className="bg-blue-500 hover:bg-blue-700 flex items-center gap-2 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         onClick={() => {
           Swal.fire({
-            title: 'Login',
+            title: 'Sign In',
             html: loginFormHTML,
             showCancelButton: false,
             showConfirmButton: false,
           });
         }}>
-        Login
+        Sign In
 
         <span className='font-bold text-xl'><CiLogin /></span>
       </button>
@@ -32,29 +35,47 @@ function Login() {
 export default Login;
 
 // LoginForm component
-export function LoginForm() { // Receive setemail and setPassword as props
+export function LoginForm() { 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const Navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const response = await PostMethod('/user/auth/signin', { email, password })
+    if (response?.status == 200 || response?.status == 201) {
+      localStorage.setItem('token', JSON.stringify(response.data.token))
+      localStorage.setItem('user', JSON.stringify(response.data.user))
+      Navigate('/dashboard')
+    }
+    setLoading(false);
+  }
   return (
-    <form className="form">
+    <form onSubmit={handleLogin} className="form">
       <div className="flex-column text-start">
         <label>Email </label>
       </div>
       <div className="inputForm">
         <div className='font-bold text-black text-xl'><CiMail /></div>
-        <input placeholder="Enter your Email" className="inputS" type="text" onChange={(e) => setEmail(e.target.value)} />
+        <input placeholder="Enter your Email" className="inputS" type="email" onChange={(e) => setEmail(e.target.value)} />
       </div>
       <div className="flex-column text-start">
         <label>Password </label>
       </div>
       <div className="inputForm">
         <div className='font-bold text-black text-xl'><CiLock /></div>
-        <input placeholder="Enter your Password" className="inputS" type="password" onChange={(e) => setPassword(e.target.value)} />
+        <input placeholder="Enter your Password" className="inputS" type={showPassword ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} />
+        <div className='font-bold text-black text-xl cursor-pointer mr-1' onClick={() => setShowPassword(!showPassword)}>{showPassword ? <IoEyeOutline /> : <IoEyeOffOutline />}</div>
+        
       </div>
       <div className="flex-row">
-        <span className="span">Forgot password?</span>
+        <a href="/auth/forget-password" className="span">Forgot password?</a>
       </div>
-      <button className="button-submit bg-blue-500">Sign In</button>
+      <button className="button-submit" onClick={() => setLoading(true)}>{loading ? 'Loading...' : 'Sign In'}</button>
       <p className="p">Don't have an account? <a href="/auth/signup" className="span">Sign Up</a>
       </p><p className="p line">Or With</p>
       <div className="flex-row">

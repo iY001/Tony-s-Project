@@ -11,7 +11,7 @@ function MasterRoutes() {
         <Route path='/' element={<Home />} />
         <Route path='/blog/*' element={<Blog />} />
         <Route path='/dashboard/*' element={<Dashbaord />} />
-        <Route path='/auth/:mode' element={<Auth />} />
+        <Route path='/auth/*' element={<Auth />} />
         <Route path='/*' element={<h1>Page Not Found</h1>} />
       </Routes>
     </>
