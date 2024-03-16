@@ -47,7 +47,8 @@
 }
 
 .inputForm:focus-within {
-  border: 1.5px solid #2d79f3;
+  border: 1.5px solid;
+  @apply  border-sky-500
 }
 
 .flex-row {
@@ -67,9 +68,9 @@
 .span {
   font-size: 14px;
   margin-left: 5px;
-  color: #2d79f3;
   font-weight: 500;
   cursor: pointer;
+  @apply text-sky-500 hover:text-sky-600;
 }
 
 .button-submit {
@@ -109,8 +110,10 @@
 }
 
 .btn:hover {
-  border: 1px solid #2d79f3;
-  ;
+  border: 1px solid;
+  
+  @apply  border-sky-500
+  
 }
 
     

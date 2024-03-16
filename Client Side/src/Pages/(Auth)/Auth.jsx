@@ -1,24 +1,19 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { LoginForm } from './Login';
-import { SignUpForm } from './SignUp';
+import { Route, Routes, Outlet, Navigate } from 'react-router-dom';
+import AuthForms from './AuthForms';
+import ForgetPassword from './ForgetPassword';
+import ResetPassword from './ResetPassword';
 
 const Auth = () => {
-  const { mode } = useParams();
-
   return (
-    <section className='w-full h-[100vh] flex items-center '>
-
-      <div className='w-[50%] h-full flex items-center justify-center'>
-        {
-          mode === 'login' ? <LoginForm /> : <SignUpForm />
-        }
-      </div>
-
-      <div className='w-[50%] h-full bg-pink-600 flex items-start '>
-
-      </div>
-    </section>
+    <Routes>
+      <Route element={<Outlet />} >
+        <Route path="/" element={<Navigate to="login" />} />
+        <Route path="/:mode" element={<AuthForms />} />
+        <Route path='/forget-password' element={<ForgetPassword />} />    
+        <Route path='/reset-password' element={<ResetPassword />} />    
+      </Route>
+    </Routes>
   );
 }
 
