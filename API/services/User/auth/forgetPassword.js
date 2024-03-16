@@ -76,7 +76,9 @@ const forgotPassword = async (req, res) => {
     try {
         const { email } = req.query
         if (!email) {
-            return res.status(400).send("Fill Email")
+            return res.status(400).send({
+                message: "Email Required"
+            })
         }
         const prisma = new PrismaClient()
         const user = await prisma.user.findFirst({
@@ -85,16 +87,23 @@ const forgotPassword = async (req, res) => {
             }
         })
         if (!user) {
-            return res.status(404).send("Not Found")
+            return res.status(404).send({
+                message: "User Not Found"
+            })
         }
 
         // Generate JWT token
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '3m' })
         sendMail(email, token)
-        res.status(200).send("Email Sent")
+        res.status(200).send({
+            message: "Email Sent"
+        })
     } catch (err) {
         console.log(err)
-        res.status(500).send("Error")
+        res.status(500).send({
+            message: "Error Sending Email",
+            error: err.message
+        })
     }
 }
 
