@@ -1,0 +1,6 @@
+tonysproject12@gmail.com
+Tonysproject0120@
+
+password : QFjL5F6HYwUXavJE
+
+mongodb+srv://root:QFjL5F6HYwUXavJE@tony.ijekq2f.mongodb.net/?retryWrites=true&w=majority&appName=tony
