@@ -7,13 +7,13 @@ import Auth from '../Pages/(Auth)/Auth'
 function MasterRoutes() {
   return (
     <>
-    <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/blog/*' element={<Blog/>}/>
-      <Route path='/dashboard/*' element={<Dashbaord/>}/>
-      <Route path='/auth/:mode' element={<Auth />}/>
-      <Route path='/*' element={<h1>Page Not Found</h1>}/>
-    </Routes>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/blog/*' element={<Blog />} />
+        <Route path='/dashboard/*' element={<Dashbaord />} />
+        <Route path='/auth/:mode' element={<Auth />} />
+        <Route path='/*' element={<h1>Page Not Found</h1>} />
+      </Routes>
     </>
   )
 }

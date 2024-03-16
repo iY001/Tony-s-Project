@@ -6,10 +6,8 @@ import './login.css'
 import { Link } from 'react-router-dom';
 
 function SignUp() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const signUpFormHTML = ReactDOMServer.renderToString(<SignUpForm setName={setName} setEmail={setEmail} setPassword={setPassword} />);
+
+  const signUpFormHTML = ReactDOMServer.renderToString(<SignUpForm />);
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -33,7 +31,10 @@ function SignUp() {
 export default SignUp;
 
 // SignUpForm component
-export function SignUpForm({ setName, setEmail, setPassword }) {
+export function SignUpForm() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   return (
     <form className="form">
       <div className="flex-column text-start">
@@ -41,24 +42,24 @@ export function SignUpForm({ setName, setEmail, setPassword }) {
       </div>
       <div className="inputForm">
         <div className='font-bold text-black text-xl'><CiLock /></div>
-        <input placeholder="Enter your Name" className="input" type="text" onChange={(e) => setName(e.target.value)} />
+        <input placeholder="Enter your Name" className="inputS" type="text" onChange={(e) => setName(e.target.value)} />
       </div>
       <div className="flex-column text-start">
         <label>Email</label>
       </div>
       <div className="inputForm">
         <div className='font-bold text-black text-xl'><CiMail /></div>
-        <input placeholder="Enter your Email" className="input" type="email" onChange={(e) => setEmail(e.target.value)} />
+        <input placeholder="Enter your Email" className="inputS" type="email" onChange={(e) => setEmail(e.target.value)} />
       </div>
       <div className="flex-column text-start">
         <label>Password</label>
       </div>
       <div className="inputForm">
         <div className='font-bold text-black text-xl'><CiLock /></div>
-        <input placeholder="Enter your Password" className="input" type="password" onChange={(e) => setPassword(e.target.value)} />
+        <input placeholder="Enter your Password" className="inputS" type="password" onChange={(e) => setPassword(e.target.value)} />
       </div>
       <button className="button-submit bg-blue-500">Sign Up</button>
-      <p className="p">Already have an account? <a href="/auth/login"  className="span">Sign In</a>
+      <p className="p">Already have an account? <a href="/auth/login" className="span">Sign In</a>
       </p><p className="p line">Or With</p>
       <div className="flex-row">
         <button className="btn google">

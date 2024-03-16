@@ -30,17 +30,19 @@
   align-items: center;
   padding-left: 10px;
   transition: 0.2s ease-in-out;
+
 }
 
-.input {
+.inputS {
   margin-left: 10px;
   border-radius: 10px;
   border: none;
   width: 100%;
-  height: 100%;
+  height: 100%; 
+  
 }
 
-.input:focus {
+.inputS:focus {
   outline: none;
 }
 
