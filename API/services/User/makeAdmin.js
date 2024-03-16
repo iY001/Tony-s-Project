@@ -12,7 +12,9 @@ const makeAdmin = async (req, res) => {
         });
 
         if (!user) {
-            return res.status(404).send("User Not Found");
+            return res.status(404).send({
+                message: "User Not Found"
+            });
         }
 
         if (user.role === 'admin') {
