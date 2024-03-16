@@ -18,7 +18,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className={`navbar lg:items-center xl:justify-evenly  2xl:justify-between xl:my-10 2xl:my-16 md:-left-1 xl:w-full max-lg:dark:bg-[#F4F4F5] lg:static md:absolute md:top-0 w-full flex max-sm:flex-wrap  justify-between   max-sm:gap-2 max-lg:py-4 ${!openMenue ? 'max-lg:shadow-md' : 'max-lg:shadow-none'}  items-center dark:text-black `}>
+        <div className={`navbar lg:items-center xl:justify-evenly   2xl:justify-between xl:my-10 2xl:my-16 md:-left-1 xl:w-full max-lg:dark:bg-[#F4F4F5] lg:static md:absolute md:top-0 w-full flex max-sm:flex-wrap  justify-between   max-sm:gap-2 max-lg:py-4 ${!openMenue ? 'max-lg:shadow-md' : 'max-lg:shadow-none'}  items-center dark:text-black `}>
             <div className="logo  font-semibold max-lg:text-4xl max-lg:items-center max-lg:mx-auto  text-xl max-lg:flex lg:text-3xl">Meta<span className='font-bold'>BLog</span> <div className='max-sm:block hidden w-20'></div>
                 <div className='md:absolute md:left-10' onClick={() => toggleMenue()}> {!openMenue ? <IoMdMenu className='text-5xl hidden max-lg:block' /> : <IoMdClose className='text-5xl  hidden max-lg:block' />}
                 </div></div>
