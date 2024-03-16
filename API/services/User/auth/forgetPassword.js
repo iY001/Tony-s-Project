@@ -64,7 +64,7 @@ const sendMail = async (email, token) => {
           <div class="header">
             <h2>Forgot Password</h2>
           </div>
-          <a href="${process.env.CLIENT}/auth/resetpassword?token=${token}" class="btn">Reset Password</a>
+          <a href="${process.env.CLIENT}/auth/resetpassword?token=${token}&email=${email}" class="btn">Reset Password</a>
           <p>If you remember your password, <a href="#" class="link">click here to log in</a>.</p>
         </div>
         </body>
