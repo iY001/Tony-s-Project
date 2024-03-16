@@ -32,8 +32,18 @@ const signin = async (req, res) => {
         res.setHeader('Authorization', token);
         res.status(200).json({ message: "User Signed In", user });
     } catch (err) {
-        console.error(err);
-        res.status(500).send('Error signing in');
+        if (err.isJoi) {
+            // Extract and send Joi validation errors
+            const validationErrors = err.details.map(error => ({
+                field: error.context.key,
+                message: error.message,
+            }));
+
+            res.status(400).json({ validationErrors });
+        } else {
+            console.error(err);
+            res.status(500).send("Error Creating User");
+        }
     }
 };
 
