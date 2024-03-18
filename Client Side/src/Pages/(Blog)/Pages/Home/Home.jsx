@@ -8,11 +8,11 @@ function Home() {
 
   return (
     <>
-      <div className="container lg:w-4/5 mx-auto">
+      
         <Navbar />
         <Hero />
         <LatestPosts/>
-      </div>
+      
 
     </>
   )

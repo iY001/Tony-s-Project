@@ -5,10 +5,11 @@ import imgPost from '../Hero/heroAsets/heroImgPlastine.jpg'
 const LatestPosts = () => {
 
     return (
-        <> <h2 className='text-3xl  font-bold'>Latest Post</h2>
+        <div className='w-4/5 xl:mx-auto'> <h2 className='text-3xl  font-bold'>Latest Post</h2>
             <div className='container flex items-center justify-center min-h-screen mx-auto'>
+
                 {/* grid system */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3 ">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 min-[1650px]:grid-cols-4 gap-3 ">
 
 
                     {/* card  */}
@@ -198,7 +199,7 @@ const LatestPosts = () => {
 
                 </div>
             </div>
-        </>
+        </div>
 
     )
 }
