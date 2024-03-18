@@ -4,7 +4,7 @@ const tokenVerification = require('../../../Validators/tokenVerification')
 const bcrypt = require('bcrypt')
 const resetPassword = async (req, res) => {
     try {
-        const token = req.headers.authorization
+        const token = req.body.authorization
         const { password } = req.body
         if (!token) {
             return res.status(400).send({

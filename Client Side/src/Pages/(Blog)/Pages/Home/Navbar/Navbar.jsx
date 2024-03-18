@@ -18,26 +18,40 @@ const Navbar = () => {
     }
 
     return (
-        <div className={`navbar lg:items-center xl:justify-evenly  2xl:justify-between xl:my-10 2xl:my-16 md:-left-1 xl:w-full max-lg:dark:bg-[#F4F4F5] lg:static md:absolute md:top-0 w-full flex max-sm:flex-wrap  justify-between   max-sm:gap-2 max-lg:py-4 ${!openMenue ? 'max-lg:shadow-md' : 'max-lg:shadow-none'}  items-center dark:text-black `}>
-            <div className="logo  font-semibold max-lg:text-4xl max-lg:items-center max-lg:mx-auto  text-xl max-lg:flex lg:text-3xl">Meta<span className='font-bold'>BLog</span> <div className='max-sm:block hidden w-20'></div>
-                <div className='md:absolute md:left-10' onClick={() => toggleMenue()}> {!openMenue ? <IoMdMenu className='text-5xl hidden max-lg:block' /> : <IoMdClose className='text-5xl  hidden max-lg:block' />}
-                </div></div>
 
-            <div className={`navLinks max-lg:absolute max-lg:shadow-md max-lg:h-[230px] md:h-[300px] xl:h-auto max-lg:w-full ${openMenue ? 'max-lg:block' : 'max-lg:hidden'} md:z-10 md:-top-[58px] max-lg:-top-2 duration-200 max-lg:dark:bg-[#F4F4F5]  max-lg:text-left max-lg:translate-y-[130px]`}>
-                <ul className={`flex hover:text-black max-lg:text-3xl max-sm:text-xl 2xl:gap-20 xl:gap-5 gap-4 lg:text-xl text-[#3B3C4A] max-lg:justify-between max-lg:flex max-lg:flex-col max-lg:my-5 max-lg:mx-10 `} >{NavLinks.map((link, i) => (<li key={i}>{link.pageName}</li>))}</ul>
+
+        <div className="navbar  w-full xl:w-4/5 xl:mx-auto py-5  xl:bg-white bg-[#F4F4F5]">
+            <div className='xl:w-full w-4/5 flex flex-col xl:flex-row xl:items-center xl:justify-between mx-auto gap-2'>
+                <div className="logo flex items-center justify-between text-5xl"><div className="">Meta<span className='font-bold'>BLog</span></div> <div className='max-sm:block hidden w-20 '></div>
+                    <div className='' onClick={() => toggleMenue()}> {!openMenue ? <IoMdMenu className='block xl:hidden' /> : <IoMdClose className='block xl:hidden' />}
+                    </div>
+                </div>
+
+                <div className={`navLinks absolute xl:static w-full xl:bg-white  p-5 bg-[#F4f3f5] ${openMenue ? 'block' : 'hidden'} xl:block top-[136px] left-0`}>
+                    <ul className={`flex flex-col  xl:flex-row gap-4 justify-center  xl:gap-10 xl:text-2xl text-xl`} >{NavLinks.map((link, i) => (<li className='cursor-pointer '  key={i}>{link.pageName}</li>))}</ul>
+                </div>
+
+
+                <div className="search-mood">
+                    <div className="search  flex items-center justify-between text-3xl lg:text-2xl  border-solid  border-black border-2 rounded-md ">
+                        <input type="text" placeholder='Search' className='outline-0 w-5/6 xl:w-auto' />
+                        <TfiSearch className='mx-auto xl:px-1 cursor-pointer' />
+                    </div>
+                    <div className="mood">
+                        <MdLightMode className='hidden' />
+                    </div>
+                </div>
             </div>
 
-            <div className="search-mood flex max-sm:w-full justify-between gap-8 items-center ">
-                <div className="search max-sm:w-4/5 md:w-full max-lg:mx-auto md:mr-5  max-lg:justify-between  flex items-center bg-[#3B3B3B] focus:outline p-2 rounded-md max-lg:dark:bg-white lg:dark:bg-[#F4F4F5]">
-                    <input type="text" placeholder='Search' className='text-white md:w-[300px] dark:text-[#3B3C4A] md:text-2xl   placeholder-[#3B3C4A] dark:border-none border border-r-0 outline-none bg-[#3b3b3b] max-lg:dark:bg-white lg:dark:bg-[#F4F4F5]' />
-                    <TfiSearch className='dark:border-none border w-2/12   border-l-0 text-xl dark:text-[#3B3C4A] box-content ' />
-                </div>
-                <div className="mood text-xl max-lg:hidden">
-                    <MdLightMode className='dark:shadow-2xl dark:bg-[#F4F4F5] p-1 box-content rounded-full  ' />
-                    <MdDarkMode className='hidden' />
-                </div>
-            </div>
+
+
         </div>
+
+
+
+
+
+
     )
 }
 
