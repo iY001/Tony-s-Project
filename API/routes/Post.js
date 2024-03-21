@@ -19,7 +19,7 @@ router.get('/:id', (req, res) => {
     getPostById(req, res)
 })
 
-router.post('/create', upload.array('files'), addPhoto , createPost )
+router.post('/', upload.array('files'), addPhoto, createPost)
 
 router.put('/:id', (req, res) => {
     editPost(req, res)

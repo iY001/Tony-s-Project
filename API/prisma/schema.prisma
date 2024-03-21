@@ -19,6 +19,7 @@ model User {
   email     String
   password  String
   role      String
+  tags      Tag[]
   posts     Post[]
   reactions Reaction[]
   createdAt DateTime   @default(now())
@@ -28,9 +29,10 @@ model User {
 model Post {
   id        String     @id @default(auto()) @map("_id") @db.ObjectId
   title     String
-  tag_id    String
   content   String
   image     Images[]
+  tag_id    String     @db.ObjectId
+  tag       Tag        @relation(fields: [tag_id], references: [id])
   user_id   String     @db.ObjectId
   user      User       @relation(fields: [user_id], references: [id])
   comments  Comment[]
@@ -54,6 +56,9 @@ model Images {
 model Tag {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   name      String
+  user_id   String   @db.ObjectId
+  user      User     @relation(fields: [user_id], references: [id])
+  Post      Post[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

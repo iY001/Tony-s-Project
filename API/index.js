@@ -11,8 +11,9 @@ app.get('/', (req, res) => res.send('Tonys Project API'))
 
 app.use('/user', require('./routes/User'))
 
-app.use('/post', require('./routes/Post'))
+app.use ('/tag', require('./routes/Tag'))
 
+app.use('/post', require('./routes/Post'))
 
 
 

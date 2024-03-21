@@ -4,12 +4,18 @@ const multer = require('multer')
 const addPhoto = async (req, res, next) => {
     try {
         const photos = req.files
-        if (!photos) {
-            return res.status(400).send({
-                error: "No photos found"
+        if (photos) {
+            req.body.photos = photos
+            res.status(200).send({
+                message: "Photo Added",
+                photos
             })
         }
-        req.body.photos = photos
+        if (!photos) {
+            return res.status(400).send({
+                error: "No Photos added"
+            })
+        }
         next()
     } catch (err) {
         console.log(err)
