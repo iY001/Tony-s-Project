@@ -26,7 +26,7 @@ function Intro() {
                     M.Tony
                 </button>
             </div>
-            <div data-aos="fade-left" data-aos-duration={1000} className="mb-5 lg:mb-0 rounded-full overflow-hidden blob z-20 w-[350px] h-[350px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] px-5 overflow flex justify-center items-center mx-auto relative border border-gray-400">
+            <div data-aos="fade-left" data-aos-duration={1000} className="mb-5 lg:mb-0 rounded-full overflow-hidden blob z-20 w-[400px] h-[400px] md:w-[450px] md:h-[450px] lg:w-[500px] lg:h-[500px] px-5 overflow flex justify-center items-center mx-auto relative border border-gray-400">
                 <div className="rounded-full w-[300px] h-[300px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] border border-gray-400 absolute" />
                 <div className="rounded-full w-[200px] h-[200px] md:w-[250px] md:h-[250px] lg:w-[300px] lg:h-[300px] bg-gradient-to-r from-35% from-indigo-400 to-fuchsia-600 absolute"/>
                 <img src={tony} className="w-[400px] h-[350px] md:w-[400px] z-10 md:h-[400px] mr-10 lg:h-[450px] mt-12" alt="!#"/>
