@@ -24,7 +24,7 @@ const postUserSchema = joi.object({
         .messages({
             'string.pattern.base': 'Password must contain at least 8 characters, one lowercase letter, one uppercase letter, one digit, and one special character.'
         }),
-    role: joi.string().valid('admin', 'moderator', 'user').default('user')
+    role: joi.string().valid('admin', 'user').default('user')
 });
 
 const putUserSchema = joi.object({
@@ -40,10 +40,19 @@ const putUserSchema = joi.object({
 
 const roleSchema = joi.string().valid('admin', 'moderator', 'user');
 
+const postSchema = joi.object({
+    title: joi.string().min(3).max(255).required(),
+    content: joi.string().trim().min(3).max(505).required()
+        .messages({
+            'string.min': 'Content must be at least 3 characters long.',
+            'string.max': 'Content must be at most 505 characters long.'
+        })
+})
 module.exports = {
     signupSchema,
     signinSchema,
     postUserSchema,
     putUserSchema,
-    roleSchema
+    roleSchema,
+    postSchema
 }

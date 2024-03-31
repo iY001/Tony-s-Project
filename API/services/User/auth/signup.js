@@ -47,7 +47,10 @@ const signup = async (req, res) => {
             res.status(400).json({ validationErrors });
         } else {
             console.error(err);
-            res.status(500).send("Error Creating User");
+            res.status(500).send({
+                message: "Error Creating User",
+                error: err.message
+            });
         }
     }
 }
