@@ -1,19 +1,29 @@
 import React, { useState } from 'react';
 import { CiMail } from "react-icons/ci";
 import { Link } from 'react-router-dom';
+import GetMethod from '../../functions/GetMethod';
+import ShowAlert from '../../functions/Swal/ShowAlert';
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [isEmailSent, setIsEmailSent] = useState(false);
 
-  const handleResetPassword = () => {
+  const handleResetPassword = async () => {
     setLoading(true);
-    // Simulating a 2-second delay
-    setTimeout(() => {
+    if (!email) {
       setLoading(false);
+      ShowAlert('error', 'Error', 'Please enter your email');
+      return;      
+    }
+    const EmailWithout = email
+    const response = await GetMethod(`/user/auth/forgetpassword?email=${EmailWithout}`);
+    
+    if (response?.status == 200 || response?.status == 201) {
       setIsEmailSent(true);
-    }, 2000);
+      ShowAlert('success', 'Success', 'Password reset sent to your email.');
+    }
+    setLoading(false);
   };
 
   return (
