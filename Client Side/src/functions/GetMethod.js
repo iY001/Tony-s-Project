@@ -1,4 +1,5 @@
 import ApiUrl from "../config/ApiUrl"
+import HandelCatchError from "./HandelCatchError"
 
 
 
@@ -7,6 +8,6 @@ export default async function GetMethod(url) {
     const response = await ApiUrl.get(url)
     return response
   } catch (error) {
-    console.log(error)
+    HandelCatchError(error)
   }
 }

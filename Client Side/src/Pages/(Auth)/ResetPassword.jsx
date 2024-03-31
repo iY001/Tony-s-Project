@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { CiMail, CiLock } from "react-icons/ci";
 import { Link, useLocation } from 'react-router-dom';
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
+import PostMethod from '../../functions/PostMethod';
+import ShowAlert from '../../functions/Swal/ShowAlert';
 
 const ResetPassword = () => {
   const [email, setEmail] = useState('');
@@ -20,12 +22,18 @@ const ResetPassword = () => {
     }
   }, [])
 
-  const handleResetPassword = () => {
+  const handleResetPassword = async () => {
     setLoading(true);
-    
-    setTimeout(() => {
+
+    if (password !== confirmPassword) {
+      ShowAlert('error', 'Error', 'Passwords do not match');
       setLoading(false);
-    }, 2000);
+      return;
+    }
+
+    await PostMethod('/user/auth/resetpassword', { email, password, token });
+
+    setLoading(false);
   };
 
   return (

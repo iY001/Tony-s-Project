@@ -6,6 +6,7 @@ import { CiLock, CiLogin, CiMail } from "react-icons/ci";
 import { IoEyeOutline,IoEyeOffOutline} from "react-icons/io5";
 import {  useNavigate } from 'react-router-dom';
 import PostMethod from '../../functions/PostMethod';
+import Cookies from 'universal-cookie';
 
 
 function Login() {
@@ -40,6 +41,8 @@ export function LoginForm() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  
+  const cookies = new Cookies(null, { path: '/' });
 
   const Navigate = useNavigate();
 
@@ -47,13 +50,22 @@ export function LoginForm() {
     e.preventDefault();
     setLoading(true);
     const response = await PostMethod('/user/auth/signin', { email, password })
+    
     if (response?.status == 200 || response?.status == 201) {
-      localStorage.setItem('token', JSON.stringify(response.data.token))
+      cookies.set('token', response?.data?.token, { path: '/' })
       localStorage.setItem('user', JSON.stringify(response.data.user))
-      Navigate('/dashboard')
+      if (response.data.user.role === 'admin') {
+        Navigate('/dashboard')
+      } else {
+        Navigate('/blog')        
+      }
     }
     setLoading(false);
   }
+
+
+
+
   return (
     <form onSubmit={handleLogin} className="form">
       <div className="flex-column text-start">
