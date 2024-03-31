@@ -36,7 +36,7 @@ function Navbar() {
                     </Link>
                 </ul>
             </nav>
-            <div id='home' class="w-[100%] h-32"></div>
+            <div id='home' class="w-[100%] h-24"></div>
 
         </>
     )

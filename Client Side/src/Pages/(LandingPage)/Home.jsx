@@ -17,7 +17,9 @@ function Home() {
   return (
     <>
     <Navbar/>
+    <div className='w-[100%] bg-[#f6f6f6]'>
     <Intro/>
+    </div>
     <About/>
     </>
   )
