@@ -2,8 +2,8 @@ import React from 'react'
 import tony from '../assets/tony.png'
 function Intro() {
     return (
-        <div className="container flex-col-reverse lg:flex-row justify-center items-center lg:w-[80%] h-auto mx-auto text-lg flex relative">
-            <div data-aos="fade-right" data-aos-duration={1000} className="w-full px-5 lg:px-0 lg:w-1/2 h-full items-center flex mb-5 justify-center lg:items-start flex-col lg:">
+        <div className="container flex-col-reverse lg:flex-row justify-center items-center w-full lg:w-[80%] h-auto mx-auto text-lg flex relative">
+            <div data-aos="fade-right" data-aos-duration={1000} className="w-full px-5 lg:px-0 lg:w-1/2 h-full items-center flex mb-5 justify-center lg:items-start flex-col">
                 <p>Hala!I'm</p>
                 <h1 className="text-4xl font-medium font-sans uppercase" style={{ color: '#FD5956' }}>Tony</h1>
                 <h1 className="text-center  text-black text-7xl lg:text-start font-medium font-sans uppercase mb-4">Physics<br /><span className="lg:ml-10">Master</span><span className style={{ color: '#FD5956' }}>.</span></h1>
@@ -28,7 +28,7 @@ function Intro() {
             </div>
             <div data-aos="fade-left" data-aos-duration={1000} className="mb-5 lg:mb-0 rounded-full overflow-hidden blob z-20 w-[300px] h-[300px] md:w-[450px] md:h-[450px] lg:w-[500px] lg:h-[500px] px-5 overflow flex justify-center items-center mx-auto relative border border-gray-400">
                 <div className="rounded-full w-[250px] h-[250px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] border border-gray-400 absolute" />
-                <div className="rounded-full w-[190px] h-[190px] md:w-[250px] md:h-[250px] lg:w-[300px] lg:h-[300px] bg-gradient-to-r from-35% from-indigo-400 to-fuchsia-600 absolute" />
+                <div className="rounded-full w-[150px] h-[190px] md:w-[250px] md:h-[250px] lg:w-[300px] lg:h-[300px] bg-gradient-to-r from-35% from-indigo-400 to-fuchsia-600 absolute" />
                 <img src={tony} className="w-[300px] h-[300px] md:w-[400px] z-10 md:h-[400px] mr-7 lg:h-[450px] mt-12" alt="!#" />
             </div>
         </div>
