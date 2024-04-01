@@ -17,6 +17,7 @@ const adminMWPremission = async (req, res, next) => {
             }
         })
         if (user.role === 'admin') {
+            req.decodedToken = decodedToken
             next();
         } else {
             res.status(403).send('No Permission');

@@ -7,6 +7,9 @@ body{
     position: relative;
 }
 
+.move:hover{
+  color: #FD5956;
+}
 .move::after{
     position: absolute;
     content: "";

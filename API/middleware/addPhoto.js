@@ -11,11 +11,11 @@ const addPhoto = async (req, res, next) => {
                 photos
             })
         }
-        if (!photos) {
-            return res.status(400).send({
-                error: "No Photos added"
-            })
-        }
+        // if (!photos) {
+        //     return res.status(400).send({
+        //         error: "No Photos added"
+        //     })
+        // }
         next()
     } catch (err) {
         console.log(err)

@@ -1,47 +1,18 @@
 import React, { useState } from 'react';
-import ReactDOMServer from 'react-dom/server';
-import Swal from 'sweetalert2';
 import './auth.css'
 import { CiLock, CiLogin, CiMail } from "react-icons/ci";
-import { IoEyeOutline,IoEyeOffOutline} from "react-icons/io5";
-import {  useNavigate } from 'react-router-dom';
+import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom';
 import PostMethod from '../../functions/PostMethod';
 import Cookies from 'universal-cookie';
 
-
-function Login() {
-  const loginFormHTML = ReactDOMServer.renderToString(<LoginForm />);
-
-
-  return (
-    <div className="flex justify-center items-center h-screen">
-      <button
-        className="bg-blue-500 hover:bg-blue-700 flex items-center gap-2 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        onClick={() => {
-          Swal.fire({
-            title: 'Sign In',
-            html: loginFormHTML,
-            showCancelButton: false,
-            showConfirmButton: false,
-          });
-        }}>
-        Sign In
-
-        <span className='font-bold text-xl'><CiLogin /></span>
-      </button>
-    </div>
-  );
-}
-
-export default Login;
-
 // LoginForm component
-export function LoginForm() { 
+export default function SignInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  
+
   const cookies = new Cookies(null, { path: '/' });
 
   const Navigate = useNavigate();
@@ -50,14 +21,14 @@ export function LoginForm() {
     e.preventDefault();
     setLoading(true);
     const response = await PostMethod('/user/auth/signin', { email, password })
-    
+
     if (response?.status == 200 || response?.status == 201) {
       cookies.set('token', response?.data?.token, { path: '/' })
       localStorage.setItem('user', JSON.stringify(response.data.user))
       if (response.data.user.role === 'admin') {
         Navigate('/dashboard')
       } else {
-        Navigate('/blog')        
+        Navigate('/blog')
       }
     }
     setLoading(false);
@@ -82,7 +53,7 @@ export function LoginForm() {
         <div className='font-bold text-black text-xl'><CiLock /></div>
         <input placeholder="Enter your Password" className="inputS" type={showPassword ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} />
         <div className='font-bold text-black text-xl cursor-pointer mr-1' onClick={() => setShowPassword(!showPassword)}>{showPassword ? <IoEyeOutline /> : <IoEyeOffOutline />}</div>
-        
+
       </div>
       <div className="flex-row">
         <a href="/auth/forget-password" className="span">Forgot password?</a>

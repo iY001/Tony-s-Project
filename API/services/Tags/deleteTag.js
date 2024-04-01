@@ -1,8 +1,8 @@
 const {PrismaClient} = require('@prisma/client')
-const tokenVerification = require('../../Validators/tokenVerification')
 
 const deleteTag = async (req, res) => {
     try{
+        const decodedToken = req.decodedToken
         const id = req.params.id
         if (!id) {
             return res.status(400).send({
@@ -10,23 +10,16 @@ const deleteTag = async (req, res) => {
             })
         }
         const prisma = new PrismaClient()
-        const token = req.headers.authorization
-        if (!token) {
-            return res.status(400).send({
-                error: "Not Authorized"
-            })
-        }
-        const decodedToken = tokenVerification(token)
-        if (!decodedToken) {
-            return res.status(400).send({
-                error: "Invalid Token"
-            })
-        }
+       const user = await prisma.user.findFirst({
+           where: {
+               id: decodedToken.id
+           }
+       })
         // get the tag
         const tag = await prisma.tag.findFirst({
             where: {
                 id: id,
-                user_id: decodedToken.id
+                user_id: user.id
             }
         })
         if (!tag) {
@@ -39,7 +32,7 @@ const deleteTag = async (req, res) => {
                 error: "User Not Found"
             })
         }
-        if (tag.user !== decodedToken.id || user.role !== "admin") {
+        if (tag.user_id !== decodedToken.id || user.role !== "admin") {
             return res.status(403).send({
                 error: "You are not authorized to delete this tag"
             })
