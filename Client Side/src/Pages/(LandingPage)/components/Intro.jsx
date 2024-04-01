@@ -26,10 +26,10 @@ function Intro() {
                     M.Tony
                 </button>
             </div>
-            <div data-aos="fade-left" data-aos-duration={1000} className="mb-5 lg:mb-0 rounded-full overflow-hidden blob z-20 w-[300px] h-[300px] md:w-[450px] md:h-[450px] lg:w-[500px] lg:h-[500px] px-5 overflow flex justify-center items-center mx-auto relative border border-gray-400">
-                <div className="rounded-full w-[250px] h-[250px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] border border-gray-400 absolute" />
-                <div className="rounded-full w-[150px] h-[190px] md:w-[250px] md:h-[250px] lg:w-[300px] lg:h-[300px] bg-gradient-to-r from-35% from-indigo-400 to-fuchsia-600 absolute" />
-                <img src={tony} className="w-[300px] h-[300px] md:w-[400px] z-10 md:h-[400px] mr-7 lg:h-[450px] mt-12" alt="!#" />
+            <div data-aos="fade-left" data-aos-duration={1000} className="mb-5 lg:mb-0 rounded-full overflow-hidden blob z-20 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] md:w-[450px] md:h-[450px] lg:w-[420px] lg:h-[420px] xl:w-[500px] xl:h-[500px] px-5 overflow flex justify-center items-center mx-auto relative border border-gray-400">
+                <div className="rounded-full w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[350px] md:h-[350px] lg:w-[320px] lg:h-[320px] xl:w-[400px] xl:h-[400px] border border-gray-400 absolute" />
+                <div className="rounded-full w-[150px] h-[150px] sm:w-[150px] sm:h-[150px] md:w-[250px] md:h-[250px] lg:w-[220px] lg:h-[220px] xl:w-[300px] xl:h-[300px] bg-gradient-to-r from-35% from-indigo-400 to-fuchsia-600 absolute" />
+                <img src={tony} className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[400px] z-10 md:h-[400px] mr-7 lg:h-[450px] mt-12" alt="!#" />
             </div>
         </div>
 
