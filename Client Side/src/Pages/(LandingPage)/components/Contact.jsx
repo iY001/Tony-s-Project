@@ -4,7 +4,7 @@ function About2() {
   return (
     <>
     <div id='contact' class="w-[100%] h-24"></div>
-    <div className='bg-[#f6f6f6] w-[80%] h-auto mx-auto'>
+    <div className='w-[80%] h-auto mx-auto'>
             <h1 className='text-6xl lg:text-7xl font-bold uppercase text-center mb-10'>Contact with me<span className='text-lime-500'>.</span></h1>
             <div className='w-full h-full justify-center items-center flex flex-col lg:flex-row'>
                 <div className="bg-gray-200 lg:mt-0 lg:mb-0 rounded-full overflow-hidden blob z-20 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] md:w-[450px] md:h-[450px] lg:w-[420px] lg:h-[420px] xl:w-[500px] xl:h-[500px] px-5 overflow flex justify-center items-center mx-auto relative">

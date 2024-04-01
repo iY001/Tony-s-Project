@@ -13,18 +13,22 @@ function Home() {
     AOS.init({
       duration: 1000,
       once: true,
-      easing: 'ease', 
+      easing: 'ease',
     });
   }, []);
   return (
     <>
-    <Navbar/>
-    <div className='w-[100%] bg-[#f6f6f6]'>
-    <Intro/>
-    </div>
-    <About/>
-    <Contact/>
-    <Footer/>
+      <Navbar />
+      <div className='w-[100%] bg-[#f6f6f6]'>
+        <Intro />
+      </div>
+      <div className='w-[100%] bg-[#f6f6f6]'>
+        <About />
+      </div>
+      <div className='w-[100%] bg-[#f6f6f6]'>
+        <Contact />
+      </div>
+      <Footer />
     </>
   )
 }
