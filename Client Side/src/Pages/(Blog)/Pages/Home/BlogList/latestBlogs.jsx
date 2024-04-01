@@ -1,7 +1,7 @@
 import React from "react";
 import imgPost from "../Hero/heroAsets/heroImgPlastine.jpg";
 
-const LatestPosts = () => {
+const LatestBlogs = () => {
   return (
     <div>
       <h2 className="text-3xl m-5  font-bold ">Latest Blogs</h2>
@@ -27,4 +27,4 @@ const LatestPosts = () => {
   );
 };
 
-export default LatestPosts;
+export default LatestBlogs;
