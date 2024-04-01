@@ -1,19 +1,105 @@
-import React from 'react';
-import avatarImg from './heroAsets/avatarCard.png';
-
+import React, { useState } from "react";
+import avatarImg from "./heroAsets/avatarCard.png";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 const Cardhero = () => {
-    return (
-        <div className="card  dark:bg-white top-1/2 2xl:top-[650px] md:top-[300px] max-sm:w-4/5 max-sm:mx-auto max-sm:mt-7 max-sm:shadow-lg md:left-[70px] md:gap-3 max-sm:gap-1 md:p-4 lg:top-[370px] 2xl:left-[280px] lg:left-[210px] lg:gap-3 lg:p-5 rounded-lg p-10 max-sm:p-4 box-content shadow-md max-sm:static absolute flex flex-col gap-7">
-            <button className='dark:bg-[#4B6BFB] rounded-md lg:w-1/3 md:w-2/5 max-sm:w-3/5  py-2 max-sm:py-1 px-4 dark:text-white capitalize text-xl'>technology</button>
-            <p className='font-bold lg:text-3xl 2xl:text-5xl max-sm:text-2xl md:text-2xl lg:leading-10 2xl:leading-tight'>The Impact of Technology on <br className='max-sm:hidden' />the Workplace: How<br /> Technology is Changing</p>
+  const [docActive, setDocActive] = useState(0);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 900,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplayspeed: 2000,
+    arrows: false,
+    beforeChange: (prev, next) => {
+      setDocActive(next);
+    },
+    appendDots: (dots) => (
+      <div className="">
+        <ul className="sm:flex items-center justify-around hidden"> {dots} </ul>
+      </div>
+    ),
+    // customPaging: (i) => (
+    //   <div
+    //     style={
+    //       i === docActive
+    //         ? {
+    //             width: "30px",
+    //             height: "30px",
+    //             color: "blue",
+    //             border: "1px solid #f3a847",
+    //             borderRadius: "50%",
+    //             display: "flex",
+    //             alignItems: "center",
+    //             justifyContent: "center",
+    //             color: "white",
+    //             background: "#131921",
+    //             padding: "8px 0",
+    //             cursor: "pointer",
+    //           }
+    //         : {
+    //             width: "30px",
+    //             height: "30px",
+    //             color: "blue",
+    //             border: "1px solid white",
+    //             borderRadius: "50%",
+    //             display: "flex",
+    //             alignItems: "center",
+    //             justifyContent: "center",
+    //             color: "white",
+    //             background: "#232f3e",
+    //             padding: "8px 0",
+    //             cursor: "pointer",
+    //           }
+    //     }
+    //   >
+    //     {i + 1}
+    //   </div>
+    // ),
+  };
+  return (
+    <div className="w-full ">
+      <div className="w-full h-full">
+        <Slider {...settings}>
+          <div>
+            <div className="card bg-gray-200 rounded-md flex flex-col p-3 min-w-[300px] max-w-[500px] mx-4 sm:mx-auto md:text-2xl    gap-2  my-2 justify-between">
+              <button className="text-center text-white font-medium rounded-md bg-[#4B6BFB] w-2/6 p-0">
+                physics
+              </button>
+              <h3 className="capitalize  font-bold leading-relaxed">
+                thanks mr tony about magnetic flux blog. it's very useful.
+              </h3>
 
-            <div className="avatar flex gap-5 ">
+              <div className="avatar flex justify-around mx-auto w-4/5">
                 <img src={avatarImg} alt="Avatar" />
                 <p>Jason Francisco</p>
                 <p>August 20, 2022</p>
+              </div>
             </div>
-        </div>
-    )
-}
+          </div>
+          <div>
+            <div className="card bg-gray-200 rounded-md flex flex-col p-3 min-w-[300px] max-w-[500px] mx-4 sm:mx-auto md:text-2xl    gap-2  my-2 justify-between">
+              <button className="text-center text-white font-medium rounded-md bg-[#4B6BFB] w-2/6 p-0">
+                physics
+              </button>
+              <h3 className="capitalize  font-bold leading-relaxed">
+                thanks mr tony about magnetic flux blog. it's very useful.
+              </h3>
 
-export default Cardhero
+              <div className="avatar flex justify-around mx-auto w-4/5">
+                <img src={avatarImg} alt="Avatar" />
+                <p>Jason Francisco</p>
+                <p>August 20, 2022</p>
+              </div>
+            </div>
+          </div>
+        </Slider>
+      </div>
+    </div>
+  );
+};
+
+export default Cardhero;

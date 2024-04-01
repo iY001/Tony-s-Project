@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './Navbar/Navbar';
 import Hero from './Hero/Hero';
-import LatestPosts from './posts/LatestPosts';
+import LatestPosts from './posts/latestBlogs';
 
 
 function Home() {
