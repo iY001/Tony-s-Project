@@ -6,6 +6,7 @@ import 'animate.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import About from './components/About';
+import About2 from './components/About2';
 function Home() {
   useEffect(() => {
     AOS.init({
@@ -21,6 +22,7 @@ function Home() {
     <Intro/>
     </div>
     <About/>
+    <About2/>
     </>
   )
 }
