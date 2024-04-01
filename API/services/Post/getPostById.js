@@ -12,6 +12,10 @@ const getPostById = async (req, res) => {
         const post = await prisma.post.findFirst({
             where: {
                 id
+            },
+            include: {
+                user: true,
+                comments: true
             }
         })
         if (!post) {

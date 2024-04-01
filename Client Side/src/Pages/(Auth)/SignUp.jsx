@@ -8,33 +8,8 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { IoEyeOutline,IoEyeOffOutline} from "react-icons/io5";
 
 
-function SignUp() {
-
-  const signUpFormHTML = ReactDOMServer.renderToString(<SignUpForm />);
-
-  return (
-    <div className="flex justify-center items-center h-screen">
-      <button
-        className="bg-blue-500 hover:bg-blue-700 flex items-center gap-2 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        onClick={() => {
-          Swal.fire({
-            title: 'Sign Up',
-            html: signUpFormHTML,
-            showCancelButton: false,
-            showConfirmButton: false,
-          });
-        }}>
-        Sign Up
-        <span className='font-bold text-xl'><CiLogin /></span>
-      </button>
-    </div>
-  );
-}
-
-export default SignUp;
-
 // SignUpForm component
-export function SignUpForm() {
+export default function SignUpForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -51,7 +26,11 @@ export function SignUpForm() {
     if (response?.status == 200 || response?.status == 201) {
       localStorage.setItem('token', JSON.stringify(response.data.token))
       localStorage.setItem('user', JSON.stringify(response.data.user))
-      Navigate('/dashboard')
+      if (response.data.user.role === 'admin') {
+        Navigate('/dashboard')
+      }else{
+        Navigate('/blog')
+      }
     }
     setLoading(false);
   }

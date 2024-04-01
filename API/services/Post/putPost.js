@@ -1,42 +1,33 @@
 const { PrismaClient } = require('@prisma/client');
 const jwt = require('jsonwebtoken');
 const tokenVerification = require('../../Validators/tokenVerification');
-const { postSchema } = require('../../Validators/userValidator');
+const { postUpdatesSchema } = require('../../Validators/postValidator');
 
-const updatePost = async (req, res, nxt) => {
+
+
+const putPost = async (req, res, nxt) => {
     try {
         const postId = req.params.id; // Assuming post ID is passed in the request params
         const postUpdates = req.body; // Updates to the post
+        if (!postUpdates) {
+            return res.status(400).send({
+                error: "Invalid Post"
+            });
+        }
         const photos = req.body.photos;
-
+        const decodedToken = req.decodedToken;
         if (!postId) {
             return res.status(400).send({
                 error: "Post ID not provided"
             });
         }
 
-        if (!photos) {
+        const validPostUpdates = await postUpdatesSchema.validateAsync(postUpdates);
+        if (!validPostUpdates) {
             return res.status(400).send({
-                error: "No photos found"
+                error: "Invalid Post"
             });
         }
-
-        const validPostUpdates = await postSchema.validateAsync(postUpdates);
-
-        const token = req.headers.authorization;
-        if (!token) {
-            return res.status(400).send({
-                error: "Not Authorized"
-            });
-        }
-
-        const decodedToken = tokenVerification(token);
-        if (!decodedToken) {
-            return res.status(400).send({
-                error: "Invalid Token"
-            });
-        }
-
         const prisma = new PrismaClient();
         const user = await prisma.user.findFirst({
             where: {
@@ -54,27 +45,30 @@ const updatePost = async (req, res, nxt) => {
         const existingPost = await prisma.post.findFirst({
             where: {
                 id: postId,
-                userId: user.id
+                user_id: user.id
             }
         });
 
         if (!existingPost) {
             return res.status(404).send({
-                error: "Post Not Found or does not belong to the user"
+                error: "Post Not Found"
             });
         }
-
+        if (existingPost.user_id !== user.id) {
+            return res.status(403).send({
+                error: "This post does not belong to you"
+            });
+        }
         // Update the post
         const updatedPost = await prisma.post.update({
             where: {
                 id: postId
             },
             data: {
-                ...validPostUpdates,
+                title: postUpdates.title || existingPost.title,
+                content: postUpdates.content || existingPost.content,
                 image: {
-                    createMany: {
-                        data: photos
-                    }
+                    create: photos ? photos : existingPost.photos
                 }
             }
         });
@@ -102,4 +96,4 @@ const updatePost = async (req, res, nxt) => {
     }
 }
 
-module.exports = updatePost;
+module.exports = putPost;

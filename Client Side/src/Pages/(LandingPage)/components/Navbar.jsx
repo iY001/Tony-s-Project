@@ -29,6 +29,9 @@ function Navbar() {
                         <a href="#about" className="text-xl link move duration-500 uppercase">About</a>
                     </li>
                     <li className="mx-4 my-6 md:my-0">
+                        <a href="#contact" className="text-xl link move duration-500 uppercase">Contact</a>
+                    </li>
+                    <li className="mx-4 my-6 md:my-0">
                         <Link to="/blog" className="text-xl link move duration-500 uppercase">Blog</Link>
                     </li>
                     <Link  to='/auth/login' className="bg-black uppercase w-28 text-white px-7 py-2 mx-4 w- hover:bg-[#f57573] duration-700 rounded-none">
@@ -36,7 +39,7 @@ function Navbar() {
                     </Link>
                 </ul>
             </nav>
-            <div id='home' class="w-[100%] h-32"></div>
+            <div id='home' class="w-[100%] h-24"></div>
 
         </>
     )

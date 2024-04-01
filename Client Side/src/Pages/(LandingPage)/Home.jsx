@@ -6,19 +6,29 @@ import 'animate.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import About from './components/About';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 function Home() {
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: true,
-      easing: 'ease', 
+      easing: 'ease',
     });
   }, []);
   return (
     <>
-    <Navbar/>
-    <Intro/>
-    <About/>
+      <Navbar />
+      <div className='w-[100%] bg-[#f6f6f6]'>
+        <Intro />
+      </div>
+      <div className='w-[100%] bg-[#f6f6f6]'>
+        <About />
+      </div>
+      <div className='w-[100%] bg-[#f6f6f6]'>
+        <Contact />
+      </div>
+      <Footer />
     </>
   )
 }

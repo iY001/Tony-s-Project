@@ -1,4 +1,5 @@
 import ApiUrl from "../config/ApiUrl"
+import HandelCatchError from "./HandelCatchError"
 
 
 export default async function DeleteMethod(url) {
@@ -6,6 +7,6 @@ export default async function DeleteMethod(url) {
     const response =  await ApiUrl.delete(url)
     return response
   } catch (error) {
-    console.log(error)
+    HandelCatchError(error)
   }
 }

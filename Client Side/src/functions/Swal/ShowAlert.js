@@ -7,7 +7,7 @@ export default function ShowAlert(icon, title, text) {
     title: title,
     text: text,
     showConfirmButton: false,
-    timer: 1500,
+    timer: 3000,
     position: 'top',
     timerProgressBar: true,
   })

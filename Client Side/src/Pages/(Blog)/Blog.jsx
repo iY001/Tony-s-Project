@@ -6,7 +6,7 @@ import Post from './Pages/Post/Post'
 
 function Blog() {
   return (
-    <>
+    <main className='dark:text-white'>
       <Routes>
         <Route element={<Outlet />}>
           <Route path='/' element={<Home />} />
@@ -15,7 +15,7 @@ function Blog() {
           <Route path='*' element={<h1>Page Not Found</h1>} />
         </Route>
       </Routes>
-    </>
+    </main>
   )
 }
 
