@@ -5,26 +5,18 @@ const deleteTag = require('../services/Tags/deleteTag')
 const postTag = require('../services/Tags/postTag')
 const getTagById = require('../services/Tags/getTagById')
 const getAllTags = require('../services/Tags/getAllTags')
+const putTag = require('../services/Tags/putTag')
+const adminMWPremission = require('../middleware/adminMWPremission')
 
 
-router.get('/', (req, res) => {
-    getAllTags(req, res)
-})
+router.get('/', getAllTags)  // Done
 
-router.get('/:id', (req, res) => {
-    getTagById(req, res)
-})
+router.get('/:id', getTagById)  // Done
 
-router.post('/', (req, res) => {
-    postTag(req, res)
-})
+router.post('/', adminMWPremission, postTag)  // Done
 
-router.put('/:id', (req, res) => {
-    putTag(req, res)
-})
+router.put('/:id', adminMWPremission, putTag)  // Not Tested 
 
-router.delete('/:id', (req, res) => {
-    deleteTag(req, res)
-})
+router.delete('/:id', adminMWPremission , deleteTag)  // Done
 
 module.exports = router

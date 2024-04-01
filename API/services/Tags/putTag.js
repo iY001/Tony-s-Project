@@ -5,19 +5,7 @@ const putTag = async (req,res)=>{
     try{
         const prisma = new PrismaClient()
         // Check if the user is authorized
-        const token = req.headers.authorization
-        if (!token) {
-            return res.status(400).send({
-                error: "Not Authorized"
-            })
-        }
-        // Check if the token is valid
-        const decodedToken = tokenVerification(token)
-        if (!decodedToken) {
-            return res.status(400).send({
-                error: "Invalid Token"
-            })
-        }
+        const decodedToken = req.decodedToken
         // Update the tag
         const user = await prisma.user.findFirst({
             where: {
@@ -30,14 +18,26 @@ const putTag = async (req,res)=>{
             })
         }
         const tagid = req.params.id
-        const tag = req.body
+        const tagUpdates = req.body
+        const existingTag = await prisma.tag.findFirst({
+            where: {
+                id: tagid,
+                user_id : user.id
+            }
+        })
+        if(!existingTag){
+            return res.status(404).send({
+                error: "Tag Not Found"
+            })
+        }
+
         const updatedTag = await prisma.tag.update({
             where: {
                 id: tagid,
                 user_id : user.id
             },
             data: {
-                name: tag.name
+                name: tagUpdates ? tagUpdates.name :  existingTag.name
             }
         })
         res.status(200).send({

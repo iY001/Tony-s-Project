@@ -1,24 +1,16 @@
-const {PrismaClient} = require('@prisma/client')
+const { PrismaClient } = require('@prisma/client')
 
-const getAllTags = async (req,res) => {
-    try{
-        const id = req.params.id
-        if (!id) {
-            return res.status(400).send({
-                error: "Tag Id Required"
-            })
-        }
+const getAllTags = async (req, res) => {
+    try {
         const prisma = new PrismaClient()
-        const tags = await prisma.tag.findFirst({
-            where: {
-                id: id
-            },
+        const tags = await prisma.tag.findMany({
             include: {
-                posts: true
+                user: true,
+                Post: true
             }
         })
         res.status(200).send(tags)
-    }catch(err){
+    } catch (err) {
         console.log(err)
         res.status(500).send({
             message: "Error Retriving Tags",

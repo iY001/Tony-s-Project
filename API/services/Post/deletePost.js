@@ -1,22 +1,10 @@
 const {PrismaClient} = require('@prisma/client')
-const tokenVerification = require('../../Validators/tokenVerification')
 
 const deletePost = async (req, res) => {
     try{
         const prisma = new PrismaClient()
         const post_id = req.params.id
-        const token = req.headers.authorization
-        if (!token) {
-            return res.status(400).send({
-                error: "Not Authorized"
-            })
-        }
-        const decodedToken = tokenVerification(token)
-        if (!decodedToken) {
-            return res.status(400).send({
-                error: "Invalid Token"
-            })
-        }
+        const decodedToken = req.decodedToken
         const post = await prisma.post.findFirst({
             where: {
                 id: post_id,
