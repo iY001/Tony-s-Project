@@ -1,21 +1,22 @@
-body{
+body {
     width: 100%;
     min-height: 100vh;
 }
 
-.move{
+.move {
     position: relative;
 }
 
-.move:hover{
-  color: #FD5956;
+.move:hover {
+    color: #FD5956;
 }
-.move::after{
+
+.move::after {
     position: absolute;
     content: "";
     width: 100%;
     height: 1px;
-    background-color:#FD5956;
+    background-color: #FD5956;
     bottom: 0;
     left: 0;
     transform: scale(0);
@@ -23,31 +24,55 @@ body{
     transform-origin: right;
 }
 
-.move:hover::after{
-    transform-origin:left ;
+.move:hover::after {
+    transform-origin: left;
     transform: scale(1);
 }
 
-.link:hover{
+.link:hover {
     color: #FD5956;
 }
 
 
-nav{
-  animation-delay: .5s;
+nav {
+    animation-delay: .5s;
 }
 
-.circel{
+.circel {
 
     background-color: #FD5956;
     position: absolute;
     clip-path: circle(50% at center);
 }
 
-.icon{
+.icon {
     color: black;
 }
 
-*{
+* {
     scroll-behavior: smooth;
 }
+
+.footertext {
+    color: transparent;
+    -webkit-text-stroke: white .5px;
+    animation: footertext 8s infinite;
+}
+
+@keyframes footertext{
+    0%{
+        color: transparent;
+    }
+    25%{
+        color: white;
+    }
+    50%{
+        color: transparent;
+    }
+    75%{
+        color: white;
+    }
+    100%{
+        color: transparent;
+    }
+    }
