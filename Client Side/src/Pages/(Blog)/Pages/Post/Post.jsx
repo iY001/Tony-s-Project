@@ -1,8 +1,4 @@
-import React, { useState } from 'react'
-import { IoMdSearch } from "react-icons/io";
-import { FiEdit } from "react-icons/fi";
-import { FaBars } from "react-icons/fa6";
-import React, { useState } from 'react'
+import React from 'react'
 import MainNavbar from '../../../../components/MainNavbar'
 function Post() {
   return(
@@ -217,13 +213,6 @@ function Post() {
       </form>
     </div>
   </div>
-
-
-
-
-
-
-    
 </>
 
   )
