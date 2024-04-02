@@ -2,102 +2,232 @@ import React, { useState } from 'react'
 import { IoMdSearch } from "react-icons/io";
 import { FiEdit } from "react-icons/fi";
 import { FaBars } from "react-icons/fa6";
-
-
+import React, { useState } from 'react'
+import MainNavbar from '../../../../components/MainNavbar'
 function Post() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  return(
+<>
+<MainNavbar />
 
-  return (
+
+    <div className='container mx-auto px-4 mt-10'>
+    <div className='bg-emerald-100 w-14 text-center'>Treval</div>
+    <div className='text-xl mt-6'>
+      <h1>I Created A Developer Rap Video - Here is What I Learned  </h1>
+    </div>
+
+
     <div>
-      <nav className="bg-blue-100">
-        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <div className="relative flex h-16 items-center justify-between">
-            <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-              {/* Mobile menu button*/}
-            </div>
-            <div className="flex    items-center justify-center sm:items-stretch sm:justify-start">
-              <div className='sm:hidden cursor' onClick={() => { setIsMenuOpen(!isMenuOpen) }}>
-
-                <FaBars />
-              </div>
-              <div className="hidden sm:ml-6 sm:block">
-                <div className="flex space-x-4">
-                  {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-
-                  <a href="#" className="rounded-md px-3 py-2 text-sm font-medium" >Homepages</a>
-                  <a href="#" className="rounded-md px-3 py-2 text-sm font-medium" >About</a>
-                  <a href="#" className="rounded-md px-3 py-2 text-sm font-medium" >Categories</a>
-                  <a href="#" className="rounded-md px-3 py-2 text-sm font-medium" >Pages</a>
-                </div>
-              </div>
-            </div>
-            <div>
-              <h1 className='items-center justify-center'> <span className='bg-teal-500 text-white'>Note</span> Book</h1>
-            </div>
-            <div className=" inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <a href="#" className="rounded-md px-3 py-2 text-sm font-medium" ><IoMdSearch /></a>
-              <a href="#" className="rounded-md px-3 py-2 text-sm font-medium" ><FiEdit /></a>
-              <a href="#" className="rounded-md px-3 py-2 text-sm font-medium" >contact</a>
-
-              <a href="#" className="rounded-md px-3 py-2 text-sm font-medium" >
-                <div className="container">
-                  <label className="toggle" htmlFor="switch">
-                    <input id="switch" className="input" type="checkbox" />
-                    <div className="icon icon--moon">
-                      <svg height={32} width={32} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path clipRule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" fillRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div className="icon icon--sun">
-                      <svg height={32} width={32} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
-                      </svg>
-                    </div>
-                  </label>
-                </div>
-              </a>
-              {/* Profile dropdown */}
-              <div className="relative ml-3">
-                <div>
-                  <button onClick={() => { setIsOpen(!isOpen) }} type="button" className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                    <span className="absolute -inset-1.5" />
-                    <span className="sr-only">Open user menu</span>
-                    <img className="h-8 w-8 rounded-full" src="/assets/tony.jpeg" alt />
-                  </button>
-                </div>
-
-                {isOpen && <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex={-1}>
-                  {/* Active: "bg-gray-100", Not Active: "" */}
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex={-1} id="user-menu-item-0">Your Profile</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex={-1} id="user-menu-item-1">Settings</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex={-1} id="user-menu-item-2">Sign out</a>
-                </div>}
-              </div>
-            </div>
+      <ul className="py-3 sm:py-4">
+        <div className="flex items-center ">
+          <div className="">
+            <img className="w-8 h-8 rounded-full" src={a} alt="mostafa gamal" />
+          </div>
+          <div className="flex-1 w50 ms-4 mx-auto">
+            <p className="text-sm font-medium">
+            Jane Cooper
+            </p>
           </div>
         </div>
-        {/* Mobile menu, show/hide based on menu state. */}
-        {isMenuOpen && <div className="sm:hidden " id="mobile-menu">
-          <div className="space-y-1 px-2 pb-3 pt-2">
-            {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-
-            <a href="#" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
-            <a href="#" className=" block rounded-md px-3 py-2 text-base font-medium">Homepages</a>
-            <a href="#" className=" block rounded-md px-3 py-2 text-base font-medium">About</a>
-            <a href="#" className=" block rounded-md px-3 py-2 text-base font-medium">Categories</a>
-            <a href="#" className=" block rounded-md px-3 py-2 text-base font-medium">Pages</a>
-          </div>
-        </div>}
-      </nav>
-
-
-
-
-
-
+      </ul>
     </div>
+
+    <div className='bg-slate-300 h-80'>
+      <p className='text-4xl text-gray-500 text-center '>
+        + add your post
+      </p>
+    </div>
+
+    <div className='mt-6'>
+      <p className='text-gray-500  text-xl '>
+        Did you come here for something in particular or just general Riker-bashing?
+        And blowing into maximum warp<br /> speed, you appeared for an instant to be in two places at once.
+        We have a saboteur aboard.
+        We know you're<br /> dealing in  stolenore.
+        But I wanna talk about the assassination attempt on Lieutenant Worf.
+        Could someone survive inside a transporter buffer for 75 years? Fate.
+        It protects fools, little children, and ships.
+
+      </p>
+    </div>
+
+
+    <div className='text-xl mt-6'>
+      <h1>I Created A Developer Rap Video - Here is What I Learned  </h1>
+    </div>
+    <div className='text-xl mt-6'>
+      <p className='text-gray-500  '>
+        Did you come here for something in particular or just general Riker-bashing?
+        And blowing into maximum warp
+        <br /> Speed, you appeared for an instant to be in two places at once.
+        We have a saboteur aboard. We know you're dealing  in stolen ore.
+        But I wanna talk about the assassination attempt
+      </p>
+    </div>
+
+  
+
+    <div className='bg-slate-200 h-30 mt-6'>
+      <p className='text-xl text-gray-500 mx-4  '>
+        "Did you come here for something in par ticular or just general Riker-bashing? And blowing into maximum warp speed,  you appeared for an instant to be in two places at once. We have a saboteur aboard. We know <br />you're dealing in stolenore. But I wanna talk about the assassination attempt on Lieutenant Worf."
+      </p> 
+      <br />
+    </div>
+
+
+    <div className='mt-6'>
+      <p className='text-gray-500 text-xl  '>
+        Did you come here for something in particular or just general Riker-bashing? And blowing into maximum warp speed, you appeared for an instant to be in two places at once. We have a saboteur aboard.
+      </p>
+    </div>
+
+
+    <div className='text-xl mt-6'>
+      <h1>I Created A Developer Rap Video - Here is What I Learned  </h1>
+    </div>
+
+
+    <div className='mt-6'>
+      <div className='text-gray-500 text-xl mt-3'>
+        <p>
+          Did you come here for something in particular or just general Riker-bashing? And blowing into maximum warp speed, you appeared for an instant to be in two places at once. We have a saboteur aboard.
+        </p>
+        <br />
+        <p>
+          1. Did you come here for something in particular or just general
+        </p>
+        <br />
+        <p>
+          2. Did you come here for something in particular or just general Riker-bashing
+        </p>
+        <br />
+        <p>
+          3. Did you come here for something in particula
+        </p>
+        <br />
+        <p>
+          Did you come here for something in particular or just general Riker-bashing? And blowing into maximum
+        </p>
+      </div>
+    </div>
+
+
+    <div className='text-xl mt-12 '>
+      <h1> 
+        <span className='bg-emerald-400 m-1 '>See ralated</span>  posts  </h1>
+    </div>
+    <div class="grid grid-cols-2 mt-10">
+      <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
+        <div className='bg-slate-400 h-60'>
+          <p className='text-4xl text-gray-500 text-center '>
+          </p>
+        </div>
+
+        <div>
+          <div>
+            <div className='bg-emerald-100 w-14 text-center mt-2 ml-2'>Treval</div>
+            <h1 className=' mt-2 ml-2 font-bold' >Set Video Playback Speed <br /> With Javascript</h1>
+          </div>
+
+          <ul className="py-3 sm:py-4 ml-2">
+            <div className="flex items-center ">
+              <div className="flex-shrink-0">
+                <img className="w-8 h-8 rounded-full" src={a} alt="Lana image" />
+              </div>
+
+              <div className="flex-1 min-w-0 ms-4">
+                <p className="text-sm text-gray-500  truncate dark:text-gray-400">
+                </p>Jane Cooper
+              </div>
+            </div>
+
+            <div>
+              <p className='mt-2'>Did you come here for something in particular or just general Riker-bashing</p>
+            </div>
+          </ul>
+        </div>
+      </div>
+      
+
+      <div class="ml-4">
+        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
+          <div className='bg-slate-400 h-60'>
+            <p className='text-4xl text-gray-500 text-center '>
+            </p>
+          </div>
+          <div>
+            <div>
+              <div className='bg-emerald-100 w-14 text-center mt-2 ml-2'>Treval</div>
+              <h1 className=' mt-2 ml-2 font-bold' >Set Video Playback Speed <br /> With Javascript</h1>
+            </div>
+
+            <ul className="py-3 sm:py-4 ml-2">
+              <div className="flex items-center ">
+                <div className="flex-shrink-0">
+                  <img className="w-8 h-8 rounded-full" src={a} alt="Lana image" />
+                </div>
+                <div className="flex-1 min-w-0 ms-4">
+                  <p className="text-sm text-gray-500  truncate dark:text-gray-400">
+                  </p>Jane Cooper
+                </div>
+              </div>
+              <div className='mt-23'>
+                <p>Did you come here for something in particular or just general Riker-bashing</p>
+              </div>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div className="w-full bg-white rounded-lg border p-2 my-4 mt-14">
+      <h3 className="font-bold">commnents</h3>
+      <form>
+        <div className="flex flex-col">
+          <div className="border rounded-md p-3 ml-3 my-3">
+            <div className="flex gap-3 items-center">
+              <img src={a} className="object-cover w-8 h-8 rounded-full border-2 border-emerald-400  shadow-emerald-400" />
+              <h3 className="font-bold">
+                User name
+              </h3>
+            </div>
+            <p className="text-gray-600 mt-2">
+              I love physics
+            </p>
+          </div>
+          <div className="border rounded-md p-3 ml-3 my-3">
+            <div className="flex gap-3 items-center">
+              <img src={a} className="object-cover w-8 h-8 rounded-full border-2 border-emerald-400  shadow-emerald-400" />
+              <h3 className="font-bold">
+                User name
+              </h3>
+            </div>
+            <p className="text-gray-600 mt-2">
+              I love physics soo match
+            </p>
+          </div>
+        </div>
+        <div className="w-full px-3 my-2">
+          <textarea className="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" name="body" placeholder="Type Your Comment" required defaultValue={""} />
+        </div>
+        <div className="w-full flex justify-end px-3">
+          <button type="submit" className="px-2.5 py-1.5 rounded-md text-white text-sm bg-indigo-500" defaultValue="Post Comment"> ADD your comment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+
+
+
+    
+</>
+
   )
 }
 
 export default Post
+
