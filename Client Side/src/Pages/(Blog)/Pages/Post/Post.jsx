@@ -1,5 +1,6 @@
 import React from 'react'
 import MainNavbar from '../../../../components/MainNavbar'
+import a from './image/a.PNG'
 function Post() {
   return(
 <>
