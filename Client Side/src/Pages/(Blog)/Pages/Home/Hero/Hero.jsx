@@ -1,11 +1,10 @@
 import React from "react";
 import Cardhero from "./Cardhero";
-import HeroImg from "./heroAsets/heroImgPlastine.jpg";
 
 const Hero = () => {
   return (
-    <div className="w-full xl:w-4/5 xl:mx-auto mt-24 flex flex-col justify-between gap-12 ">
-      <img className="mx-auto rounded-md w-full" src={HeroImg} alt="" />
+    <div className="w-full  pt-24 flex flex-col justify-between gap-12  bg-[#f6f6f6] p-2">
+      <img className="mx-auto rounded-md object-cover w-[90%] h-[400px]" src={"/assets/cover-1.jpg"} alt="" />
       <Cardhero />
     </div>
   );

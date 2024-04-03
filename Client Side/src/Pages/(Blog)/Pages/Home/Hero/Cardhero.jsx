@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import avatarImg from "./heroAsets/avatarCard.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,7 +6,7 @@ const Cardhero = () => {
   const settings = {
     infinite: true,
     speed: 1100,
-    slidesToShow: 1,
+    slidesToShow: 2,
     slidesToScroll: 1,
     autoplay: true,
     autoplayspeed: 2000,
@@ -27,7 +26,7 @@ const Cardhero = () => {
               </h3>
 
               <div className="avatar flex justify-around mx-auto w-4/5 xl:text-lg">
-                <img src={avatarImg} alt="Avatar" />
+                <img src={"/assets/avatar.png"} className="w-8 h-8 rounded-full" alt="Avatar" />
                 <p>Jason Francisco</p>
                 <p>August 20, 2022</p>
               </div>
@@ -43,7 +42,7 @@ const Cardhero = () => {
               </h3>
 
               <div className="avatar flex justify-around mx-auto w-4/5 xl:text-lg">
-                <img src={avatarImg} alt="Avatar" />
+                <img src={"/assets/avatar.png"} className="w-8 h-8 rounded-full" alt="Avatar" />
                 <p>Jason Francisco</p>
                 <p>August 20, 2022</p>
               </div>

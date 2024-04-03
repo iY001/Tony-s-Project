@@ -7,8 +7,6 @@ import MainNavbar from "../../../../components/MainNavbar";
 function Home() {
   return (
     <>
-      {/* <Navbar /> */}
-      <MainNavbar />
       <Hero />
       <LatestBlogs />
     </>
